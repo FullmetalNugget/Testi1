@@ -5,42 +5,16 @@
         static void Main(string[] args)
         {
             Console.Title = "Ritariryhmä Liikkeelle";
-            Console.WriteLine("Anna kuninkaan rivi (1-8):");
-            int kingRow = int.Parse(Console.ReadLine());
-            Console.WriteLine("Anna kuninkaan sarake (1-8):");
-            int kingCol = int.Parse(Console.ReadLine());
-
-            Console.Clear();
-            Console.WriteLine("Pelikenttä:\n");
-
-            for (int row = 1; row <= 8; row++)
-            {
-                for (int col = 1; col <= 8; col++)
-                {
-                    if (row == kingRow && col == kingCol)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.Write("K ");
-                    }
-                    else if ((row == kingRow - 1 && col == kingCol) ||
-                             (row == kingRow + 1 && col == kingCol) ||
-                             (row == kingRow && col == kingCol - 1) ||
-                             (row == kingRow && col == kingCol + 1))
-                    {
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.Write("R ");
-                        Console.Beep();
-                    }
-                    else
-                    {
-                        Console.ResetColor();
-                        Console.Write(". ");
-                    }
-                }
-                Console.WriteLine();
-            }
-
-            Console.ResetColor();
+            Console.Write("Anna kuninkaan rivi? ");
+            int r = int.Parse(Console.ReadLine());
+            Console.Write("Anna kuninkaan sarake? ");
+            int c = int.Parse(Console.ReadLine());
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            if (r > 1) Console.WriteLine($"Ritari 1 Kohteeseen: ({r - 1}, {c})");
+            if (r < 8) Console.WriteLine($"Ritari 2 Kohteeseen: ({r + 1}, {c})");
+            if (c > 1) Console.WriteLine($"Ritari 3 Kohteeseen: ({r}, {c - 1})");
+            if (c < 8) Console.WriteLine($"Ritari 4 Kohteeseen: ({r}, {c + 1})");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
